@@ -18,10 +18,10 @@
 - Uses Ray Traced Shadows instead of Shadow Mapping/Virtual Shadow Mapping (SM/VSM).
 - Uses Contact Shadows for smaller foliage/meshes such as grass, leafs and swamps.
 - Uses Temporal Super Resolution (TSR) for Anti-Aliasing.
-- Has an average of ~3 million tris being drawned. (Not optimized good enough, the bigger version level has around ~500 thousand tris)
-- Nanite calculates 5-10 thousand instances/meshes (Depending on where the camera/player is).
+- Has an average of ~2 million tris being drawned, there for it's not optimized good enough. (The bigger version level has around ~500 thousand tris)
+- Nanite calculates 5-10 thousand instances/meshes, depending on where the camera/player is.
 - Alot of Ray Tracing is used, so Draw calls is exactly optimized enough to keep up with the GPU. (We do not support bottleneck)
-- Reflections does not use High Quality Translucency Reflections (Look in the water, picture below*) since that costs way too much in this scene.
+- Reflections does not use High Quality Translucency Reflections (Look in the water, picture above*) since that costs way too much in this scene.
 - It does use Virtual Textures since we are using up to 8192x8192 (8k) textures, but most textures are 4096x4096 (4k).
 - It doesn't use RVT (Runtime Virtual Textures), but it is planned for the future in other technical demos.
 
@@ -29,6 +29,17 @@
 - It uses DX12 (DirectX 12) with both Shader 5 & 6. <- This might cause crashes or even visible bugs on AMD GPU's.
 - I strongly recommend an RTX 2000 / RX 6000 series or higher GPU for atleast 30 frames per second (33ms). My 3070 Ti can handle about 60 frames per second (16ms).
 ````
+
+## How Ray Tracing works in this scene
+```
+Every shadow in this scene uses Ray Tracing, there for it's also a high computational cost. However, if Shadow Maps were utilized instead, an additional 100ms of GPU processing time would be gained (depending on cascades and distance). Currently, the GPU is operating at a rate of 12-18ms on a 3070 Ti.
+
+Ray tracing only culls objects that are in-front and behind the camera/player, utilizing a 15000-unit (150 meter) distance and a 5-degree angle.
+
+Things such as grass, moss and tiny rocks does not dynamic shadows at all, since we want the best performance with little to no impact on quality.
+So for grass, moss and tiny rocks we only use contact shadows instead of anything dynamic.
+```
+An example of RTCS: https://images.nvidia.com/geforce-com/international/comparisons/control/control-ray-traced-contact-shadows-interactive-comparison-001-on-vs-off.html
 
 #
 ```This is the whole scene, it does not look like you thought.```
