@@ -1,5 +1,7 @@
 # Nordic Forest ``Technical Demo``
 ## Download: https://renderu.itch.io/nordic-forest
+![ScreenshotOne](https://user-images.githubusercontent.com/54723076/214756604-83baa711-414c-46c7-bf2f-8775a6fd9d89.png)
+
 ````
 - Assets used: https://www.unrealengine.com/marketplace/en-US/product/nordic-conifer-biome
 ````
@@ -16,7 +18,7 @@
 - Uses Ray Traced Shadows instead of Shadow Mapping/Virtual Shadow Mapping (SM/VSM).
 - Uses Contact Shadows for smaller foliage/meshes such as grass, leafs and swamps.
 - Uses Temporal Super Resolution (TSR) for Anti-Aliasing.
-- Has an average of ~3 million tris being drawned (Not optimized good enough, the bigger version level has around ~500 thousand tris)
+- Has an average of ~3 million tris being drawned. (Not optimized good enough, the bigger version level has around ~500 thousand tris)
 - Nanite calculates 5-10 thousand instances/meshes (Depending on where the camera/player is).
 - Alot of Ray Tracing is used, so Draw calls is exactly optimized enough to keep up with the GPU. (We do not support bottleneck)
 - Reflections does not use High Quality Translucency Reflections (Look in the water, picture below*) since that costs way too much in this scene.
@@ -27,3 +29,17 @@
 - It uses DX12 (DirectX 12) with both Shader 5 & 6. <- This might cause crashes or even visible bugs on AMD GPU's.
 - I strongly recommend an RTX 2000 / RX 6000 series or higher GPU for atleast 30 frames per second (33ms). My 3070 Ti can handle about 60 frames per second (16ms).
 ````
+
+#
+```This is the whole scene, it does not look like you thought.```
+![ScreenshotTwo](https://user-images.githubusercontent.com/54723076/214756654-3586291c-2d96-4ecb-aaf0-f590c5252691.png)
+#
+```This is the whole scene but in Nanite Triangles viewmode, calculating over 100 million triangles (No LODs or cull distance at all)```
+![ScreenshotTwoTriangles](https://user-images.githubusercontent.com/54723076/214756662-bbb120e6-9c69-495c-8a5a-6d98315ac011.png)
+#
+```One of the mesh without Nanite```
+![TreeWithoutNanite](https://user-images.githubusercontent.com/54723076/214756685-5ba27a29-fb2e-4806-9c98-066b04ef8205.png)
+#
+```One of the mesh WITH Nanite. Take a note that the bigger scene has over 5 billion triangles and this tree has around 6000 triangles without visible quality changes in that scene. The bigger scene is not dual for production/tech since it only offers limited stuff, there for I only released the small one I made in one hour. Everything is mostly procedural since I'm not a level designer nor do I like it.```
+![TreeWithNanite](https://user-images.githubusercontent.com/54723076/214756689-15ec9d1b-b90f-40e3-81ae-09abd9fedefa.png)
+
