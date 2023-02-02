@@ -44,19 +44,13 @@ What is Lumen?: https://docs.unrealengine.com/5.1/en-US/lumen-global-illuminatio
 
 ## Benchmark tests
 ```
-AMD 5600 XT @ Epic: 100fps (DX12, SM6, Accurate)
+AMD 5600 XT @ Epic: 90fps (DX12, SM6, Accurate)
 RTX 3070 Ti @ Epic: 150fps (DX12, SM6, Accurate)
 GTX 1060    @ Epic: 40fps  (DX12, SM6, Estimation)
 
-
-AMD 5600 XT @ High: 120fps (DX12, SM6, Accurate)
+AMD 5600 XT @ High: 110fps (DX12, SM6, Accurate)
 RTX 3070 Ti @ High: 200fps (DX12, SM6, Accurate)
-GTX 1060    @ Epic: 100fps  (DX12, SM6, Estimation)
-
-How did I estimate?
-The 1060 is 202% slower than the 3070 Ti.
-200 / 2 = 100.
-
+GTX 1060    @ Epic: 50fps  (DX12, SM6, Estimation)
 ``` 
 
 
